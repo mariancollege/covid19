@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>covid19</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Footer-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+      <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5debdd14754da500126f3295&product=sticky-share-buttons&cms=sop' async='async'></script>
+<style>
+    .searchbtn:focus {
+              padding-left: 5px;
+              padding-right: 5px;
+            border-radius: 5px;
+            border: solid #72bcfc 2px;
+            box-shadow: 0 0 10px #72bcfc;
+            -moz-box-shadow: 0 0 5px #888;
+            -webkit-box-shadow: 0 0 5px#888;
+              background-image: none;
+
+}
+        .searchbtn{
+            padding-left: 32px;
+           border: solid #72bcfc 2px;
+           border-radius: 5px;
+            background-image: url({% static 'img/neww.png' %});
+            background-size:25px;
+            background-repeat: no-repeat;
+            background-position: 6px;
+        }
+</style>
+
+</head>
+
+<body style="padding-bottom: 0px;">
+    <div class="container" style="margin-bottom: 170px;">
+        <header>
+            <div class="container" style="padding: 0px;">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="max-width: 100%;padding: 0px;">
+                    <div style="text-align: left;margin-top: 30px;margin-bottom: 30px;">
+                        <div class="row">
+                            <div class="col" style="margin-bottom: 35px;">
+                                <div style="text-align: center;">
+                                    <div style="background: black;"><label style="border-top: none;padding-bottom: 0px;margin-bottom: 0px;color: white;margin-left: 2px;font-weight: 800;font-size: 74px;">Covid-</label><label style="/*background: blue;*/padding-bottom: 0px;margin-bottom: 0px;color: white;margin-left: 2px;font-weight: 800;font-size: 74px;">19</label></div>
+                                    <div style="background: black; border-top: none"><label style="padding-left: 5px;padding-right: 5px;background: white;margin-top: 0px;color: rgb(0,0,0);font-weight: 800;font-size: 18px;">World Statistics of Corona - Live Updates</label></div>
+                            </div>
+                        </div>
+                    </div>
+                        <button onclick="topFunction()" id="myBtn" title="Go to top" style="padding-left: 4px;margin-bottom: 40px">Top</button>
+                    <div>
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col" style="display: inline-flex;vertical-align: middle;">
+                                <div style="display: flex;margin: auto;vertical-align: middle;text-align: center;"><label style="margin-top: 11px;height: 10px;width: 40px;color: white;background: rgb(40,136,225);">.</label></div>
+                            </div>
+                            <div class="col"><label class="col-form-label">Confirmed</label></div>
+                            <div class="col"><label class="col-form-label" style="padding-left: 3px;color: white;background: rgb(40,136,225);padding-right: 5px;">{{data2}}</label></div>
+                        </div>
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col" style="display: inline-flex;vertical-align: middle;">
+                                <div style="display: flex;margin: auto;vertical-align: middle;text-align: center;"><label style="margin-top: 11px;height: 10px;width: 40px;color: white;background: red;">.</label></div>
+                            </div>
+                            <div class="col"><label class="col-form-label">Deaths</label></div>
+                            <div class="col"><label class="col-form-label" style="padding-left: 3px;color: white;background: red;padding-right: 5px;">{{data3}}</label></div>
+                        </div>
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col" style="display: inline-flex;vertical-align: middle;">
+                                <div style="display: flex;margin: auto;vertical-align: middle;text-align: center;"><label style="margin-top: 11px;height: 10px;width: 40px;color: white;background: green;">.</label></div>
+                            </div>
+                            <div class="col"><label class="col-form-label">Recovered</label></div>
+                            <div class="col"><label class="col-form-label" style="padding-left: 3px;color: white;background: green;padding-right: 5px;">{{data4}}</label></div>
+                        </div>
+                        <div class="row" style="margin-bottom: 50px;">
+                            <div class="col" style="display: inline-flex;vertical-align: middle;">
+                                <div style="display: flex;margin: auto;vertical-align: middle;text-align: center;"><label style="margin-top: 11px;height: 10px;width: 40px;color: white;background: rgb(255,138,0);">.</label></div>
+                            </div>
+                            <div class="col"><label class="col-form-label">Active</label></div>
+                            <div class="col"><label class="col-form-label" style="padding-left: 3px;color: white;background: rgb(255,138,0);padding-right: 5px;">{{data5}}</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p style="text-align: center;">
+                      <input style="margin-bottom: 20px; max-width: 100%;height: 40px;font-size: 18px;width: 500px;text-align: center" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by country name.." title="Type in a name" class="searchbtn" >
+                            </p>
+                </div>
+
+                <div>
+                    <div class="table-responsive" style="max-width: 100%;">
+                        <table class="table" id="myTable">
+                            <thead>
+                                <tr style="background: rgb(234,234,234);border: none;">
+
+                                    <th>Country</th>
+                                    <th>Confirmed</th>
+                                    <th>Deaths</th>
+                                    <th>Recovered</th>
+                                    <th>Active</th>
+{#                                    <th>Position</th>#}
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for item in data1 %}
+                                <tr>
+
+                                    <td><p>{{item.cname}}</p></td>
+                                    <td><p>{{item.confirmed}}</p></td>
+                                    <td><p>{{item.deaths}}</p></td>
+                                    <td><p>{{item.recovered}}</p></td>
+                                    <td><p>{{item.active}}</p></td>
+{#                                    <td><p>{{item.cid}}</p></td>#}
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </header>
+    </div>
+    <div class="row" style="background: rgb(244,244,244);margin-bottom: 43px;padding-bottom: 10px ">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center align-items-center align-content-center p-0 m-0">
+            <a class="p-0 m-2 d-inline-block" href="https://github.com/mariancollege" target="_blank">
+                <h3><i class="fa fa-github-square"></i></h3>
+            </a>
+            <a class="p-0 m-2 d-inline-block" href="https://www.facebook.com/profile.php?id=100024655097000" target="_blank">
+                <h3><i class="fa fa-facebook-square"></i></h3>
+            </a>
+            <a class="p-0 m-2 d-inline-block" href="https://www.linkedin.com/in/sarath-chandran-b5b255154/" target="_blank">
+                <h3><i class="fa fa-linkedin-square"></i></h3>
+            </a>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 align-self-center p-0 m-0" style="text-align: center;"><img style="border-radius: 25px;border: solid rgb(188,183,183) 2px;width: 40px;height: 40px;" src="{% static 'assets/img/sarath1.jpg' %}"><label>sarath1plaza@gmail.com</label></div>
+    </div>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+<script>
+    var mybutton = document.getElementById("myBtn");
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+</body>
+
+</html>
